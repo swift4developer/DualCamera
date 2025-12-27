@@ -9,14 +9,27 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            DualCameraViewRepresentable()
+                .ignoresSafeArea()
+
+            VStack {
+                Spacer()
+                Text("Dual Camera Preview")
+                    .foregroundColor(.white)
+                    .padding(.bottom, 30)
+            }
         }
-        .padding()
     }
+}
+
+struct DualCameraViewRepresentable: UIViewRepresentable {
+
+    func makeUIView(context: Context) -> DualCameraView {
+        DualCameraView()
+    }
+
+    func updateUIView(_ uiView: DualCameraView, context: Context) { }
 }
 
 #Preview {
